@@ -1,4 +1,6 @@
-'https://stackoverflow.com/questions/19953979/cracking-sheet-password-with-vba/19958159
+'https://stackoverflow.com/questions/19953979/cracking-sheet-password-with-vba/19958159 https://archive.is/Xjy8v
+'https://tarsolutions.co.uk/blog/excel-unprotect-workbook-worksheets-using-vba/ https://archive.vn/Yz0l7
+'https://chandoo.org/forum/threads/excel-macro-for-removing-worksheet-password-can-you-explain.29288/ https://archive.vn/urxmx
 Sub PasswordBreaker()
     Dim i As Integer, j As Integer, k As Integer
     Dim l As Integer, m As Integer, n As Integer
