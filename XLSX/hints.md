@@ -14,7 +14,7 @@ hyperrefoptions:
 
 ## Sheet Protections
 
-Quelle: <https://praxistipps.chip.de/excel-passwort-des-blattschutzes-vergessen_16735> bzw. <>
+Quelle: <https://praxistipps.chip.de/excel-passwort-des-blattschutzes-vergessen_16735> bzw. <https://archive.vn/J5N4N>
 
 * Open `xlsx` file with archiver
 * Search relevant sheet in structure (top folder `xl` and therein `worksheets`)
