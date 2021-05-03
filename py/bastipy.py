@@ -44,5 +44,30 @@ else:
         load_all_cores(duration_s=loadduration, target_load=theload)
 
 
+try:
+    import psutil  # type: ignore[import]
+except ImportError:
+    pass
+else:
+
+    def bastitiming(func):
+        """bastitiming is a decorator to time calls by process timings"""
+        save = func.__name__
+
+        def wrapped(*args, **kwargs):
+            before = psutil.Process().cpu_times()
+            retval = func(*args, **kwargs)
+            after = psutil.Process().cpu_times()
+            print(
+                f"{save} took ",
+                before.__class__(
+                    *(after[i] - before[i] for i in range(len(before)))
+                ),
+            )
+            return retval
+
+        return wrapped
+
+
 if __name__ == "__main__":
     print("DANKE Basti")

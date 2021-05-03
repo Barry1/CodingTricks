@@ -6,11 +6,8 @@ LINELENGTH = 85
 #prospector *.py seems to be defect at the moment
 
 check:
-	pylint *.py
-#	pep8 *.py
-	pylama *.py
-	flake8 --ignore=E501 *.py
-	mypy --python-version 3.7 --show-error-codes *.py
+	pylama
+	-pytest
 
 pretty:
 	isort --overwrite-in-place --line-length $(LINELENGTH) --py 37 *.py
