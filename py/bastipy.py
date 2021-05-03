@@ -58,9 +58,10 @@ else:
             before = psutil.Process().cpu_times()
             retval = func(*args, **kwargs)
             after = psutil.Process().cpu_times()
+            thediff = (after[i] - before[i] for i in range(len(before)))
             print(
                 f"{save} took ",
-                before.__class__(*(after[i] - before[i] for i in range(len(before)))),
+                before.__class__(*thediff),
             )
             return retval
 
