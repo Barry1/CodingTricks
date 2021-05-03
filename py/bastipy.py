@@ -52,17 +52,14 @@ else:
 
     def bastitiming(func):
         """bastitiming is a decorator to time calls by process timings"""
-        save = func.__name__
+        savename = func.__name__
 
         def wrapped(*args, **kwargs):
             before = psutil.Process().cpu_times()
             retval = func(*args, **kwargs)
             after = psutil.Process().cpu_times()
             thediff = (after[i] - before[i] for i in range(len(before)))
-            print(
-                f"{save} took ",
-                before.__class__(*thediff),
-            )
+            print(f"{savename} took {before.__class__(*thediff)}")
             return retval
 
         return wrapped
