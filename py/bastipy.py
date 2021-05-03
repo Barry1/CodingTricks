@@ -60,9 +60,7 @@ else:
             after = psutil.Process().cpu_times()
             print(
                 f"{save} took ",
-                before.__class__(
-                    *(after[i] - before[i] for i in range(len(before)))
-                ),
+                before.__class__(*(after[i] - before[i] for i in range(len(before)))),
             )
             return retval
 
