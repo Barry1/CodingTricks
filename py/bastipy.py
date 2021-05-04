@@ -1,5 +1,6 @@
 #!/usr/bin/python3 -OO
 """bastipy is just a module with some helpers for me """
+from typing import Callable, TypeVar
 
 
 def ic(*a):  # pylint: disable=invalid-name
@@ -44,22 +45,57 @@ else:
         load_all_cores(duration_s=loadduration, target_load=theload)
 
 
+InnerFunctionReturnType = TypeVar("InnerFunctionReturnType")
 try:
     import psutil  # type: ignore[import]
 except ImportError:
-    pass
-else:
+    import os
 
-    def bastitiming(func):
-        """bastitiming is a decorator to time calls by process timings"""
+    ic("Timing of function with the help of module os")
+
+    def bastitiming(
+        func: Callable[..., InnerFunctionReturnType]
+    ) -> Callable[..., InnerFunctionReturnType]:
+        """bastitiming is a decorator to time calls"""
         savename = func.__name__
 
         def wrapped(*args, **kwargs):
+            beforesys = os.times()
+            retval = func(*args, **kwargs)
+            aftersys = os.times()
+            thediffsys = beforesys.__class__(
+                aftersys[i] - beforesys[i] for i in range(len(beforesys))
+            )
+            print(f"processing of {savename} took {thediffsys}")
+            return retval
+
+        return wrapped
+
+
+else:
+    ic("Timing of function with the help of module psutil")
+
+    def bastitiming(
+        func: Callable[..., InnerFunctionReturnType]
+    ) -> Callable[..., InnerFunctionReturnType]:
+        """bastitiming is a decorator to time calls"""
+        savename = func.__name__
+
+        def wrapped(*args, **kwargs):
+            beforesys = psutil.cpu_times()
             before = psutil.Process().cpu_times()
             retval = func(*args, **kwargs)
             after = psutil.Process().cpu_times()
-            thediff = (after[i] - before[i] for i in range(len(before)))
-            print(f"{savename} took {before.__class__(*thediff)}")
+            aftersys = psutil.cpu_times()
+            thediff = before.__class__(
+                *(after[i] - before[i] for i in range(len(before)))
+            )
+            thediffsys = beforesys.__class__(
+                *(aftersys[i] - beforesys[i] for i in range(len(beforesys)))
+            )
+            print(f"processing of {savename} took")
+            print(f"{thediff} in total {sum(thediff)}")
+            print(f"{thediffsys} in total {sum(thediffsys)}")
             return retval
 
         return wrapped
@@ -67,3 +103,4 @@ else:
 
 if __name__ == "__main__":
     print("DANKE Basti")
+    bastitiming(loadallcores)(15, 0.9)
