@@ -79,7 +79,6 @@ else:
             print(f"{thediff} in total {sum(thediff)}")
             print(f"{thediffsys} in total {sum(thediffsys)}")
             return retval
-
         return wrapped
 if __name__ == "__main__":
     print("DANKE Basti")
