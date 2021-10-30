@@ -60,4 +60,5 @@ Scaling with `5/7` now leads to the wanted
 
 ## Example
 
-![image](https://user-images.githubusercontent.com/230051/139531200-87f4ae2d-d8c2-4a4d-bd7a-05e3c83c841a.png)
+![Example-image](https://user-images.githubusercontent.com/230051/139531275-9086766c-fafe-42d5-a7dc-7ebf3073af16.png)
+
