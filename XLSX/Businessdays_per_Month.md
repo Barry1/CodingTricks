@@ -9,17 +9,34 @@ Okay, for those, who just want a formula: Insert the month of interest (as date)
 Then enter the formula
 
 ```excel
-=(TAG(DATUM(JAHR(A1);MONAT(A1)+1;1)-1)-WOCHENTAG(DATUM(JAHR(A1);MONAT(A1)+1;1)-1)-(8-WOCHENTAG(DATUM(JAHR(A1);MONAT(A1);1))))/7*5+MIN(5;7-WOCHENTAG(DATUM(JAHR(A1);MONAT(A1);1)))+MIN(5;WOCHENTAG(DATUM(JAHR(A1);MONAT(A1)+1;1)-1)-1)
+=
+ MIN(5,7-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1)))
+ +(DAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-(8-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1))))/7*5
+ +MIN(5,WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-1)
 ```
 
 into you cell of interest - and here we are - you can see the number of business days. Public holidays are not taken into account.
 
-## now with explanantion
+## With explanantion
 
 As we do not know, if the first and/or last week is incomplete, we count in three different steps.
 
 ### the first week in the month
 
+First we calculate the weekday of the first day within the month of interest by `WEEKDAY(DATE(YEAR(A1),MONTH(A1),1)`.
+To find out, how many working days are in the first month, we simply subtract from seven but cap to 5:
+
+```excel
+MIN(5,7-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1)))
+```
+
 ### the last week in the month
+
+First we calculate the weekday of the las day within the month of interest by `WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)`. (This is of course one day before the first of the next month.)
+To find out, how many working days are in the last month, we just cap the predecessors value to 5:
+
+```excel
+MIN(5,WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-1)
+```
 
 ### the weeks in between
