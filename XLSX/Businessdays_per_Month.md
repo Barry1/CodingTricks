@@ -57,3 +57,6 @@ Scaling with `5/7` now leads to the wanted
      -WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)
 )/7*5
 ```
+
+## Example
+
