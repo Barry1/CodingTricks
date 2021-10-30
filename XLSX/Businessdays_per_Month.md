@@ -12,7 +12,11 @@ Then enter the formula
 =
  MIN(5,7-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1)))
  +MIN(5,WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-1)
- +(DAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-(8-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1))))/7*5
+ +(
+     DAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)
+     -(8-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1)))
+     -WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)
+  )/7*5
 ```
 
 into you cell of interest - and here we are - you can see the number of business days. Public holidays are not taken into account.
@@ -42,3 +46,14 @@ MIN(5,WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)-1)
 ### the weeks in between
 
 This might be last easiest step: For each week in between (excluding) the first and the last week, we have 5 working days per those 7 days of the weeks.
+How to get the number of in between days?
+Just start with the last day number of the month `DAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)` and now subtract the number of days in the first week `8-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1))` and the numbers of days in the last week `WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)`.
+Scaling with `5/7` now leads to the wanted
+
+```excel
+(
+     DAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)
+     -(8-WEEKDAY(DATE(YEAR(A1),MONTH(A1),1)))
+     -WEEKDAY(DATE(YEAR(A1),MONTH(A1)+1,1)-1)
+)/7*5
+```
