@@ -1,9 +1,10 @@
-#!/usr/bin/python3 -OO
+#!/usr/bin/env -S python3.10 -OO
 """bastipy is just a module with some helpers for me """
-from typing import Callable, TypeVar
+from os import times_result
+from typing import Any, Callable, TypeVar
 
 
-def ic(*a):  # pylint: disable=invalid-name
+def ic(*a) -> Any | tuple[Any, ...] | None:  # pylint: disable=invalid-name
     """Just in case package icecream is not available: For logging purpuses."""
     if not a:
         return None
@@ -57,20 +58,19 @@ except ImportError:
         func: Callable[..., InnerFunctionReturnType]
     ) -> Callable[..., InnerFunctionReturnType]:
         """bastitiming is a decorator to time calls"""
-        savename = func.__name__
+        savename: str = func.__name__
 
-        def wrapped(*args, **kwargs):
-            beforesys = os.times()
-            retval = func(*args, **kwargs)
-            aftersys = os.times()
-            thediffsys = beforesys.__class__(
+        def wrapped(*args, **kwargs) -> InnerFunctionReturnType:
+            beforesys: times_result = os.times()
+            retval: InnerFunctionReturnType = func(*args, **kwargs)
+            aftersys: times_result = os.times()
+            thediffsys: times_result = beforesys.__class__(
                 aftersys[i] - beforesys[i] for i in range(len(beforesys))
             )
             print(f"processing of {savename} took {thediffsys}")
             return retval
 
         return wrapped
-
 
 else:
     ic("Timing of function with the help of module psutil")
@@ -81,10 +81,10 @@ else:
         """bastitiming is a decorator to time calls"""
         savename = func.__name__
 
-        def wrapped(*args, **kwargs):
+        def wrapped(*args, **kwargs) -> InnerFunctionReturnType:
             beforesys = psutil.cpu_times()
             before = psutil.Process().cpu_times()
-            retval = func(*args, **kwargs)
+            retval: InnerFunctionReturnType = func(*args, **kwargs)
             after = psutil.Process().cpu_times()
             aftersys = psutil.cpu_times()
             thediff = before.__class__(

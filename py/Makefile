@@ -10,8 +10,8 @@ check:
 	-pytest
 
 pretty:
-	isort --overwrite-in-place --line-length $(LINELENGTH) --py 37 *.py
-	black --color --target-version py37 --line-length $(LINELENGTH) *.py
+	isort --profile=black --overwrite-in-place --line-length $(LINELENGTH) --py 310 *.py
+	black --color --target-version py310 --line-length $(LINELENGTH) *.py
 
 autogit: check pretty
 	git commit -m "Autocommit from Makefile after check and pretty"
