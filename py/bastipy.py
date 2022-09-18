@@ -79,7 +79,7 @@ else:
         func: Callable[..., InnerFunctionReturnType]
     ) -> Callable[..., InnerFunctionReturnType]:
         """bastitiming is a decorator to time calls"""
-        savename = func.__name__
+        savename: str = func.__name__
 
         def wrapped(*args, **kwargs) -> InnerFunctionReturnType:
             beforesys = psutil.cpu_times()
