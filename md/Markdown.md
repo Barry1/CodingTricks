@@ -10,6 +10,8 @@ author: Dr. Bastian Ebeling
 
 ## eingebaute Grafiken
 
+Gemäß dem [Link](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams) können in GitHub einige Grafiken inline codiert und in der Anzeige gleich dargestellt werden.
+
 ### PlantUML
 
 Viele grafische Darstellung können mit Hilfe von [PlantUML](https://plantuml.com/) erzeugt werden.
@@ -37,7 +39,7 @@ colors
 @enduml
 ```
 
-#### Nachbarfarben
+##### Nachbarfarben
 
 Verträgliche Nachbarfarben können mit dem Befehl `colors #FARBNAME#` angezeigt werden.
 
@@ -49,4 +51,20 @@ colors Gainsboro
 
 ### Mermaid
 
+Eine andere Syntax bietet [Mermaid](https://mermaid-js.github.io/mermaid).
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
 ### kroki
+
+### GeoJSON and TopoJSON
+
+[GeoTopo]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-geojson-and-topojson-maps
+
+Folgend der Beschreibung unter dem [Link][GeoTopo] können auch direkt Karten eingebettet werden.
