@@ -1,5 +1,5 @@
 #!/usr/bin/env -S python3.10 -OO
-"""bastipy is just a module with some helpers for me """
+"""bastipy is just a module with some helpers for me"""
 from os import times_result
 from typing import Any, Callable, TypeVar
 
@@ -13,7 +13,9 @@ def ic(*a) -> Any | tuple[Any, ...] | None:  # pylint: disable=invalid-name
 
 if __debug__:
     try:
-        from icecream import ic  # type: ignore[import,no-redef]  # noqa: F811,W0404
+        from icecream import (
+            ic,
+        )  # type: ignore[import,no-redef]  # noqa: F811,W0404
     except ImportError:
         pass  # Fallback to default
     else:

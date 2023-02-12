@@ -8,8 +8,8 @@ smart: true
 documentclass: scrartcl
 colorlinks: true
 hyperrefoptions:
-    - linktoc=all
-    - pdfwindowui
+  - linktoc=all
+  - pdfwindowui
 ---
 
 ## Sheet Protections
@@ -18,19 +18,20 @@ hyperrefoptions:
 
 Quelle: <https://praxistipps.chip.de/excel-passwort-des-blattschutzes-vergessen_16735> bzw. <https://archive.vn/J5N4N>
 
-* Open `xlsx` file with archiver
-* Search relevant sheet in structure (top folder `xl` and therein `worksheets`)
-* Process `sheet#.xml`
-  * remove tag starting with `<sheetProtection"` ending with `"scenarios="1">`
-* save and be happy
+- Open `xlsx` file with archiver
+- Search relevant sheet in structure (top folder `xl` and therein `worksheets`)
+- Process `sheet#.xml`
+  - remove tag starting with `<sheetProtection"` ending with `"scenarios="1">`
+- save and be happy
 
 ### Cracking the password (or one working analogous)
 
-* <https://www.online-tech-tips.com/ms-office-tips/how-to-remove-crack-or-break-a-forgotten-excel-xls-password/> or <https://archive.vn/51ywg>
+- <https://www.online-tech-tips.com/ms-office-tips/how-to-remove-crack-or-break-a-forgotten-excel-xls-password/> or <https://archive.vn/51ywg>
+
 ```VBA
 Sub BreakPassword()
 
-   Dim i As Integer, j As Integer, k As Integer 
+   Dim i As Integer, j As Integer, k As Integer
    Dim l As Integer, m As Integer, n As Integer
    Dim i1 As Integer, i2 As Integer, i3 As Integer
    Dim i4 As Integer, i5 As Integer, i6 As Integer
@@ -55,4 +56,5 @@ Sub BreakPassword()
 
 End Sub
 ```
-* other solution <https://exceloffthegrid.com/removing-cracking-excel-passwords-with-vba/#Cracking_worksheet_and_workbook_passwords> bzw. <https://archive.is/ULCjT>
+
+- other solution <https://exceloffthegrid.com/removing-cracking-excel-passwords-with-vba/#Cracking_worksheet_and_workbook_passwords> bzw. <https://archive.is/ULCjT>

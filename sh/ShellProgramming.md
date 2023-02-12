@@ -22,6 +22,7 @@ is true while
 ```
 
 interprets the `<` to be a file redirection operator and thus you need to quote is as
+
 ```bash
 [ 1 \< 3 ]
 ```
