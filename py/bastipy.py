@@ -1,5 +1,5 @@
 #!/usr/bin/env -S python3.10 -OO
-"""bastipy is just a module with some helpers for me"""
+"""bastipy is just a module with some helpers for me."""
 from os import times_result
 from typing import Any, Callable, TypeVar
 
@@ -29,7 +29,7 @@ else:
     def loadonecore(
         loadduration: int = 10, loadedcore: int = 0, theload: float = 0.5
     ) -> None:
-        """just a helper function to generate load on one given core"""
+        """just a helper function to generate load on one given core."""
         load_single_core(
             core_num=loadedcore,
             duration_s=loadduration,
@@ -44,7 +44,7 @@ except ImportError:
 else:
 
     def loadallcores(loadduration: int = 10, theload: float = 0.5) -> None:
-        """just a helper function to generate load on all cores"""
+        """just a helper function to generate load on all cores."""
         load_all_cores(duration_s=loadduration, target_load=theload)
 
 
@@ -59,7 +59,7 @@ except ImportError:
     def bastitiming(
         func: Callable[..., InnerFunctionReturnType]
     ) -> Callable[..., InnerFunctionReturnType]:
-        """bastitiming is a decorator to time calls"""
+        """bastitiming is a decorator to time calls."""
         savename: str = func.__name__
 
         def wrapped(*args, **kwargs) -> InnerFunctionReturnType:
@@ -80,7 +80,7 @@ else:
     def bastitiming(
         func: Callable[..., InnerFunctionReturnType]
     ) -> Callable[..., InnerFunctionReturnType]:
-        """bastitiming is a decorator to time calls"""
+        """bastitiming is a decorator to time calls."""
         savename: str = func.__name__
 
         def wrapped(*args, **kwargs) -> InnerFunctionReturnType:
