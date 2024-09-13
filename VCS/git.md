@@ -7,6 +7,16 @@ date: 26.03.2023
 [ghtokens]: https://github.com/settings/tokens
 [ghcredstore]: https://git-scm.com/docs/git-credential-store
 
+## General setup
+
+Before using git, make sure, to set some basics:
+
+```sh
+git config --global color.ui auto
+git config --global user.name "[name]"
+git config --global user.email "[email address]"
+```
+
 ## Authentification for CLI
 
 If acceptable for your environment, run
@@ -17,7 +27,7 @@ git config --global credential.helper store
 
 to enable storing of passwords.
 
-### For usin GitHub
+### For using GitHub
 
 The open the [URL][ghtokens] to create a token.
 After logging in the first time with you Username and the Token as Password, you will no longer be asked for login credentials.
