@@ -1,11 +1,13 @@
 ---
 title: Tipps and Tricks for using Git and REpos
 author: Dr. Bastian Ebeling
-date: 26.03.2023
+date: 13.09.2024
 ---
 
 [ghtokens]: https://github.com/settings/tokens
 [ghcredstore]: https://git-scm.com/docs/git-credential-store
+[gitmergerepo]: https://www.simplicidade.org/notes/2009/04/21/merging-two-unrelated-repositories
+[gitmergerepoarchiv]: https://archive.today/WK04N
 
 ## General setup
 
@@ -33,3 +35,8 @@ The open the [URL][ghtokens] to create a token.
 After logging in the first time with you Username and the Token as Password, you will no longer be asked for login credentials.
 
 For further details see [here][ghcredstore].
+
+## Mering two unrelated repositories
+
+Sometimes you might come to the situation, to merge two unrelated repositories - and in best case keep the history. But how?
+It is exlained [here][gitmergerepo] or as a Backup in this [archived link][gitmergerepoarchiv].
