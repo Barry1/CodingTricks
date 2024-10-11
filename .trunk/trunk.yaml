@@ -1,32 +1,40 @@
 version: 0.1
 cli:
-  version: 1.6.1
+  version: 1.22.6
 plugins:
   sources:
     - id: trunk
-      ref: v0.0.13
+      ref: v1.6.3
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
-    - taplo@0.7.0
-    - ruff@0.0.259
-    - yamllint@1.30.0
-    - isort@5.12.0
-    - actionlint@1.6.23
-    - black@23.1.0
+    - bandit@1.7.10
+    - checkov@3.2.257
+    - trivy@0.56.2
+    - trufflehog@3.82.8
+    - taplo@0.9.3
+    - ruff@0.6.9
+    - yamllint@1.35.1
+    - isort@5.13.2
+    - actionlint@1.7.3
+    - black@24.10.0
     - git-diff-check
-    - flake8@6.0.0
-    - markdownlint@0.33.0
-    - gitleaks@8.16.1
-    - prettier@2.8.7
+    - flake8@7.1.1
+    - markdownlint@0.42.0
+    - gitleaks@8.20.1
+    - prettier@3.3.3
 runtimes:
   enabled:
-    - go@1.19.5
+    - go@1.21.0
     - node@18.12.1
-    - python@3.10.8
+    - python@3.11.8
 actions:
   enabled:
     - trunk-announce
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
     - trunk-upgrade-available
+tools:
+  enabled:
+    - sourcery@1.23.0
+    - poetry@1.8.3
