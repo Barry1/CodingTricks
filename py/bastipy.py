@@ -1,5 +1,6 @@
 #!/usr/bin/env -S python3.10 -OO
 """bastipy is just a module with some helpers for me."""
+
 from os import times_result
 from typing import Any, Callable, TypeVar
 
@@ -13,17 +14,17 @@ def ic(*a) -> Any | tuple[Any, ...] | None:  # pylint: disable=invalid-name
 
 if __debug__:
     try:
-        from icecream import (
-            ic,
-        )  # type: ignore[import,no-redef]  # noqa: F811,W0404
+        from icecream import ic  # type: ignore[import,no-redef]  # noqa: F811,W0404
     except ImportError:
         pass  # Fallback to default
     else:
         ic.configureOutput(includeContext=True)  # type: ignore[attr-defined]
 try:
     from cpu_load_generator import load_single_core  # type: ignore[import]
-except ImportError:
-    pass
+except ImportError as theIE:
+    print(
+        f"{theIE}:Problem importing cpu_load_generator, is that module installed?"
+    )
 else:
 
     def loadonecore(
@@ -39,8 +40,10 @@ else:
 
 try:
     from cpu_load_generator import load_all_cores  # type: ignore[import]
-except ImportError:
-    pass
+except ImportError as theIE:
+    print(
+        f"{theIE}:Problem importing cpu_load_generator, is that module installed?"
+    )
 else:
 
     def loadallcores(loadduration: int = 10, theload: float = 0.5) -> None:
@@ -57,7 +60,7 @@ except ImportError:
     ic("Timing of function with the help of module os")
 
     def bastitiming(
-        func: Callable[..., InnerFunctionReturnType]
+        func: Callable[..., InnerFunctionReturnType],
     ) -> Callable[..., InnerFunctionReturnType]:
         """bastitiming is a decorator to time calls."""
         savename: str = func.__name__
@@ -78,7 +81,7 @@ else:
     ic("Timing of function with the help of module psutil")
 
     def bastitiming(
-        func: Callable[..., InnerFunctionReturnType]
+        func: Callable[..., InnerFunctionReturnType],
     ) -> Callable[..., InnerFunctionReturnType]:
         """bastitiming is a decorator to time calls."""
         savename: str = func.__name__
