@@ -18,4 +18,3 @@ autogit: check pretty
 
 autopush: autogit
 	git push
-
